@@ -6,8 +6,8 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path.match(/items/)
-      item_name = req.path.split("/items/").last
-      if item =@@items.find{|i| i.name == item_name}
+      item_query = req.path.split("/items/").last
+      if item =@@items.find{|item| item.name == item_query}
         resp.write item.price
       else
         resp.status = 400
